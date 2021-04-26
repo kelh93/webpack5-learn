@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode=development --config=./build/webpack.config.js",
+    "dev": "webpack-dev-server --mode=development --config=./build/webpack.dev.js",
+    "build": "webpack --mode=production --config=./build/webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -24,6 +25,7 @@
     "@babel/preset-react": "^7.13.13",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.1",
     "html-webpack-plugin": "^5.3.1",
     "less": "^4.1.1",
@@ -32,9 +34,12 @@
     "postcss": "^8.2.10",
     "postcss-loader": "^5.2.0",
     "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.1.1",
     "webpack": "^5.33.2",
+    "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   },
   "dependencies": {
     "antd": "^4.15.1",

@@ -11,3 +11,24 @@ body,html {
     width: 100%;
     height: 100%;
 }
+.app {
+    width: 100%;
+    height: 100%;
+    background: url('./assets/imgs/test.jpeg') no-repeat center;
+    background-size: 100% 100%;
+}
+.login-box {
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translate3d(0,-50%,0);
+    background-color: #fff;
+    padding: 20px;
+}
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
