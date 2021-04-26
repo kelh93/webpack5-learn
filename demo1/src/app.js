@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input } from 'antd';
+import { Button, Input, message } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 // import zhCN from 'antd/lib/locale/zh_CN';
 // import moment from 'moment';
@@ -17,6 +17,7 @@ const App = () => {
       password,
     };
     console.log('login', params);
+    message.success('登录成功');
   };
   const onInputChange = (e, keyName) => {
     const { value } = e.target;
@@ -31,17 +32,29 @@ const App = () => {
     <div className='app'>
       <div className='login-box'>
         <h1 className='title'>登录</h1>
-        <Input className='username' placeholder='用户名' onChange={(e) => onInputChange(e, 'username')} />
-        <Input className='password' type='password' placeholder='密码' onChange={(e) => onInputChange(e, 'password')} />
-        <Button type='primary' onClick={login}>
+        <Input className='username' placeholder='admin' onChange={(e) => onInputChange(e, 'username')} allowClear />
+        <Input
+          className='password'
+          type='password'
+          placeholder='123456'
+          onChange={(e) => onInputChange(e, 'password')}
+          // 避免自动填充密码
+          autoComplete='new-password'
+          allowClear
+        />
+        <Button className='login-btn' type='primary' onClick={login}>
           登录
         </Button>
-        <img
+        <div className='helper'>
+          <span className='helper-item forgot'>忘记密码？</span>
+          <span className='helper-item register'>注册</span>
+        </div>
+        {/* <img
           className='avatar'
           src='https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=111713540,615806613&fm=26&gp=0.jpg'
-        />
+        /> */}
         {/* <img src={localImg} /> */}
-        <RightOutlined />
+        {/* <RightOutlined /> */}
       </div>
     </div>
   );
