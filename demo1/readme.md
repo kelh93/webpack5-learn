@@ -72,3 +72,14 @@ publicPath
 2. 开启热更新.
 解决: devServer开启`hot:true`配置.
 3. css文件无法正常解析.
+4. 热更新无效  
+```js
+    module.exports = {
+        //...
+        devServer: {
+            hot: true, //不生效，是因为没有配置target
+        },
+        target: 'web',// 配置web就可以了. 默认值为browserslist
+    }
+```
+5. 

@@ -7,7 +7,9 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = () => {
   const devConfig = {
+    target: 'web',
     mode: 'development',
+    devtool: 'inline-source-map',
     plugins: [
       new HtmlWebpackPlugin({
         title: 'demo1',
@@ -20,7 +22,7 @@ module.exports = () => {
     ],
     devServer: {
       // contentBase: path.resolve(__dirname, 'dist'),
-      hot: true, //开启热更新
+      // hot: true, //开启热更新
       // devtool: 'inline-source-map',
       proxy: {
         // 接口代理
