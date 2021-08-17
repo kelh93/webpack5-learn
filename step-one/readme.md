@@ -7,18 +7,18 @@
 react-hook
 
 ## 要支持的功能
-- [] 支持postcss,对css做兼容处理. `css-loader`, `style-loader`
-- [] `babel7.x`支持es6+等语言新特性.
-- [] 搭建可用的react全家桶.
+- [ ] 支持postcss,对css做兼容处理. `css-loader`, `style-loader`
+- [ ] `babel7.x`支持es6+等语言新特性.
+- [ ] 搭建可用的react全家桶.
     -react@17.x
     -react-router
     -redux/recoil
 - [x] Tree Shaking(webpack内置)
 - [x] Split Chunk(webpack内置)
-- [] ESlint 
-- [] Stylint 
-- [] 打包出不同的版本,`umd`、`cjs`、`esm`.
-- [] UI框架 `antd`.配置按需加载.`babel-plugin-import`.
+- [ ] ESlint 
+- [ ] Stylint 
+- [ ] 打包出不同的版本,`umd`、`cjs`、`esm`.
+- [ ] UI框架 `antd`.配置按需加载.`babel-plugin-import`.
 > -懒加载,保证最少的index.js文件大小.
 > -优化启动时间.
 
