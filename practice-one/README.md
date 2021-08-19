@@ -69,5 +69,52 @@ module.exports = {
 };
 ``` 
 修改之后正常，一定要注意路径问题。 
+4. 安装`antd`，配置了`css module`后，antd样式不生效。
+由于在webpack.base.js中配置了css module，就将antd里面的less、css也进行了转化，导致className不一致无法正常加载样式。
+如果使用`exclude: /node_modules/`会使得less文件报错:`.bezierEasingMixin() Inline JavaScript is not enabled.`。
+解决办法：再新增一个css、less的解析规则。区分开业务代码css和框架css。 
+只保留核心代码
+```js
+module.exports = {
+      {
+        test: /\.(less|css)$/,
+        exclude: /node_modules/, // 不处理第三方模块的css、less
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
+            },
+          },
+           'postcss-loader'
+          ,
+          'less-loader'
+        ],
+      },
+      {
+        test: /\.(less|css)/,
+        exclude: [/src/], // 专门给antd配置一套css解析规则，此规则不包含业务代码
+        use: ['style-loader', 'css-loader', {
+          loader: 'less-loader',
+          options: {
+            lessOptions: {
+              modifyVars: {
+                'primary-color': '#1DA57A',
+                'link-color': '#1DA57A',
+                'border-radius-base': '2px',
+              },
+              javascriptEnabled: true,
+            },
+          },
+        }],
+      },
+}
+```
+6. 配置DLL，添加第三方插件的构建缓存，加快构建速度。
+未开启cache，构建速度 47659ms。像 `react、react-dom、antd`等第三方插件是不会发生变化的，所以可以将构建结果缓存起来，避免每次启动服务都去构建。
 
 
