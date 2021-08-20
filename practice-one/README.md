@@ -116,5 +116,17 @@ module.exports = {
 ```
 6. 配置DLL，添加第三方插件的构建缓存，加快构建速度。
 未开启cache，构建速度 47659ms。像 `react、react-dom、antd`等第三方插件是不会发生变化的，所以可以将构建结果缓存起来，避免每次启动服务都去构建。
+> 放弃DLL，使用HardSourceWebpack代替。webpack4以后就放弃了。vue-cli和create-react-app 都已经将DLL移除。 
+
+```shell
+yarn add hard-source-webpack-plugin -D
+```
+
+### webpack5使用`cache`，用系统缓存。不再支持`hard-source-webpack-plugin`。
+**使用Cache属性对构建进行缓存**
+> Webpack5 之前，我们会使用 cache-loader[12] 缓存一些性能开销较大的 loader ，或者是使用 hard-source-webpack-plugin[13] 为模块提供一些中间缓存。在 Webpack5 之后，默认就为我们集成了一种自带的缓存能力（对 module 和 chunks 进行缓存[14]）。通过如下配置，即可在二次构建时提速。
+
+7.  devServer contentBase, publicPath, 与 output path 、publicPath 的区别 
+
 
 

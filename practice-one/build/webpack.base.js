@@ -20,6 +20,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              sourceMap: devMode ? true : false,
               importLoaders: 2, // 代表执行css-loader之前需要执行几次其他loader
               // 0 => no loaders (default);
               // 1 => postcss-loader;
@@ -36,7 +37,7 @@ module.exports = {
               postcssOptions: {
                 plugins: [
                   [
-                    'postcss-preset-env',
+                    'postcss-preset-env', // 内置autoprefixer
                     {
                       autoprefixer: true,
                     },
@@ -47,7 +48,7 @@ module.exports = {
             },
           },
           {
-            loader: 'less-loader',
+            loader: 'less-loader', // antd 主题色
             options: {
               lessOptions: {
                 modifyVars: {

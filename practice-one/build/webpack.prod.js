@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const prodConfig = {
@@ -15,6 +16,18 @@ const prodConfig = {
       new TerserPlugin({
         parallel: true,
         extractComments: false, // 🙅‍♂️生成license文件
+      }),
+      new CssMinimizerPlugin({
+        parallel: true, // cpu 核心 - 1
+        minify: CssMinimizerPlugin.cleanCssMinify,
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true }, // 删除css注释
+            },
+          ],
+        },
       }),
     ],
     splitChunks: {
